@@ -39,7 +39,7 @@ https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitr
 * VR-AWS
 * VR-IDC
 * source/dest. check 해제
-  -ge2/ge3에 대해서
+  - ge2/ge3에 대해서
 # 7. VR(ge1) 접속
 ```
 ssh -i lz-capital-singapore.pem ec2-user@10.101.0.195
