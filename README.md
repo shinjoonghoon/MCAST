@@ -3,7 +3,7 @@
 # 1. VPC 생성
 # 2. Security Group 생성
 # 3. EIP와 Network Interfaces 생성
-# 4. Multicast source/memeber instance 생성
+# 4. Multicast source/member instance 생성
 * iperf 설치
 ```
 sudo amazon-linux-extras install epel -y
@@ -171,7 +171,7 @@ wr
 ```
 sho ip int br
 ```
-*validation
+* validation
 ```
 ping 192.168.1.1
 ping 192.168.1.2
