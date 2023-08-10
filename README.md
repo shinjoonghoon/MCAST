@@ -229,4 +229,7 @@ sho int summary
 ```
 # 17. (Optional) IGMPv2
 * Multicast on transit gateways - Considerations: https://docs.aws.amazon.com/vpc/latest/tgw/tgw-multicast-overview.html
+
+# ref
+https://www.cisco.com/c/en/us/support/docs/ip/ip-multicast/43584-mcast-over-gre.html
   
