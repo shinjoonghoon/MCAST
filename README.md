@@ -14,11 +14,11 @@ yum install iperf.x86_64 -y
 ```
 * iperf client
 ```
-iperf -c 224.9.9.9 -u -T 10 -t 10000 -i 1 -b 1024 -p 5001 -l 300
+iperf -c 224.9.9.5 -u -T 10 -t 10000 -i 1 -b 1024 -p 5001 -l 300
 ```
 * iperf server
 ```
-iperf -s -i 1 -B 224.9.9.9 -u -p 5001
+iperf -s -i 1 -B 224.9.9.5 -u -p 5001
 ```
 # 5. Transit Gateway 구성
 * Transit Gateway 생성
@@ -74,7 +74,7 @@ sho conf
 ```
 ```
 #AWS-VR ge 2
-configure t
+conf t
 interface gigabitEthernet 2
 ip address 10.101.1.107 255.255.255.0
 no shutdown
@@ -82,7 +82,7 @@ end
 wr
 
 #AWS-VR ge 3
-configure t
+conf t
 interface gigabitEthernet 3
 ip address 10.101.2.112 255.255.255.0
 no shutdown
@@ -90,7 +90,7 @@ end
 wr
 
 #IDC-VR ge 2
-configure t
+conf t
 interface gigabitEthernet 2
 ip address 10.201.1.136 255.255.255.0
 no shutdown
@@ -98,7 +98,7 @@ end
 wr
 
 #IDC-VR ge 3
-configure t
+conf t
 interface gigabitEthernet 3
 ip address 10.201.2.207 255.255.255.0
 no shutdown
@@ -150,7 +150,7 @@ ping 8.8.8.8
 # 11. interface Tunnel 생성
 * VR-AWS
 ```
-config t
+conf t
 interface Tunnel0
 ip address 192.168.1.1 255.255.255.0
 tunnel source gigabitEthernet 2
@@ -160,7 +160,7 @@ wr
 ```
 * VR-IDC
 ```
-config t
+conf t
 interface Tunnel0
 ip address 192.168.1.2 255.255.255.0
 tunnel source gigabitEthernet 2
@@ -187,12 +187,12 @@ ip multicast-routing distributed
 ```
 # 13. Tunnel0와 ge3에 PIM 구성
 ```
-config t
+conf t
 interface Tunnel0
 ip pim sparse-mode
 end
 
-configure t
+conf t
 interface gigabitEthernet 3
 ip pim sparse-mode
 end
@@ -200,15 +200,28 @@ wr
 
 sho ip pim neighbor
 ```
+```
+VR-AWS#sh ip pim neighbor 
+PIM Neighbor Table
+Mode: B - Bidir Capable, DR - Designated Router, N - Default DR Priority,
+      P - Proxy Capable, S - State Refresh Capable, G - GenID Capable,
+      L - DR Load-balancing Capable
+Neighbor          Interface                Uptime/Expires    Ver   DR
+Address                                                            Prio/Mode
+192.168.1.2       Tunnel0                  00:42:22/00:01:42 v2    1 / S P G
+```
+
 # 14. PIM RP 구성
 ```
+conf t
 ip pim rp-address 192.168.1.2
+end
 ```
 # 15. VR-AWS에서 igmp static-group 구성
 ```
-config t
+conf t
 interface gigabitEthernet 3
-ip igmp static-group 224.9.9.9
+ip igmp static-group 224.9.9.5
 exit
 end
 ```
