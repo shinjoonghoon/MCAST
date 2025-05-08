@@ -248,7 +248,7 @@ show ip mroute
 ```
 
 ## 16. (선택) Secondary IP Address 구성 (VR-IDC)
-
+**Multicast 소스 네트워크에 대한 RPF(Reverse Path Forwarding) 문제를 해결하기 위한 방법**
 ```shell
 conf t
 interface gigabitEthernet 3
