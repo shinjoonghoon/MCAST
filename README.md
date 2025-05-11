@@ -4,6 +4,12 @@ AWS 환경에서 Cisco Multicasting을 구축하는 표준화된 절차와 명�
 
 ---
 
+## Architecture Overview
+
+![Multicast over GRE Architecture](https://github.com/shinjoonghoon/MCAST/blob/main/images/mcast_overview.png)
+
+---
+
 ## 목차
 
 - [1. VPC 생성](#1-vpc-생성)
