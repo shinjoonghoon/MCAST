@@ -1,6 +1,5 @@
 # Cisco Multicasting on AWS  
 AWS 환경에서 Cisco Multicasting을 구축하는 표준화된 절차와 명령어를 정리한 가이드입니다.  
-가독성과 유지보수를 위해 단계별로 구성하였으며, 각 단계별 주요 명령어와 참고 링크를 포함합니다.
 
 ---
 
